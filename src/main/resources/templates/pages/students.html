@@ -13,12 +13,12 @@
   <h1>Recherche</h1>
   <div class="top-section">
     <form class="search-form" th:action="@{/students}" method="get">
-      <label>
+      <label class="hidden-label" for="search">Rechercher un étudiant :</label>
         <input type="text"
+               id="search"
                name="search"
                th:value="${param.search}"
                placeholder="Rechercher un étudiant...">
-      </label>
       <button type="submit">Rechercher</button>
     </form>
 
