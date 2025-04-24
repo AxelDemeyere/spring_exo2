@@ -3,7 +3,6 @@ body {
     font-family: Arial, sans-serif;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem;
 }
 
 h1 {
@@ -343,11 +342,6 @@ nav a:hover {
     transition: color 0.3s;
 }
 
-main {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 2rem;
-}
 
 .top-section {
     display: flex;
@@ -359,3 +353,11 @@ main {
 .hidden-label {
     display: none;
 }
+ .error {
+     color: red;
+
+ }
+
+ input.error {
+     border: 1px solid red;
+ }
