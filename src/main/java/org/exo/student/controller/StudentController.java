@@ -1,9 +1,11 @@
 package org.exo.student.controller;
 
+import jakarta.validation.Valid;
 import org.exo.student.model.Student;
 import org.exo.student.service.StudentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -20,11 +22,6 @@ public class StudentController {
         return "pages/home";
     }
 
-    @RequestMapping("/students")
-    public String students(Model model) {
-        model.addAttribute("students", studentService.getAllStudents());
-        return "pages/students";
-    }
 
     @GetMapping("/students")
     public String students(@RequestParam(value = "search", required = false) String search, Model model) {
@@ -36,16 +33,24 @@ public class StudentController {
         return "pages/students";
     }
 
-    @RequestMapping("/students/register")
+    @GetMapping("/students/register")
     public String register(Model model) {
         Student student = new Student();
         model.addAttribute("student", student);
-        return "pages/register";
+        return "pages/form";
     }
 
-    @RequestMapping(value = "/students/register/create", method = RequestMethod.POST)
-    public String createStudent(Student student) {
-        studentService.saveStudent(student);
+    @PostMapping(value = "/students/register/")
+    public String createStudent(@Valid @ModelAttribute("student") Student student, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "pages/form";
+        } else {
+            if (student.getId() != 0) {
+                studentService.updateStudent(student.getId(), student);
+            } else {
+                studentService.saveStudent(student);
+            }
+        }
         return "redirect:/students";
     }
 
@@ -55,7 +60,7 @@ public class StudentController {
         return "pages/details";
     }
 
-    @RequestMapping(value = "/students/delete/{id}", method = RequestMethod.POST)
+    @PostMapping(value = "/students/delete/{id}")
     public String deleteStudent(@PathVariable("id") int id) {
         studentService.deleteStudent(id);
         return "redirect:/students";
@@ -65,7 +70,7 @@ public class StudentController {
     public String showUpdateForm(@PathVariable("id") int id, Model model) {
         Student student = studentService.getOneStudent(id);
         model.addAttribute("student", student);
-        return "pages/update";
+        return "pages/form";
     }
 
     @PostMapping("/students/update/{id}")
@@ -74,13 +79,5 @@ public class StudentController {
         return "redirect:/students";
     }
 
-    @GetMapping("/students/search")
-    public String searchStudent(@RequestParam(value = "search", required = false) String search, Model model) {
-        if (search != null && !search.isEmpty()) {
-            model.addAttribute("students", studentService.searchStudent(search));
-        } else {
-            model.addAttribute("students", studentService.getAllStudents());
-        }
-        return "pages/students";
-    }
+
 }

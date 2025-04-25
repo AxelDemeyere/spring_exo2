@@ -3,6 +3,7 @@ body {
     font-family: Arial, sans-serif;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 2rem;
 }
 
 h1 {
@@ -49,21 +50,10 @@ a:hover {
     background-color: #0056b3;
 }
 
-.empty-message {
-    text-align: center;
-    padding: 2rem;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    margin: 2rem 0;
-    color: #6c757d;
-    font-size: 1.1rem;
-    border: 1px solid #dee2e6;
-}
-
 
 /* Form */
 
-.form {
+form {
     background: white;
     padding: 2rem;
     border-radius: 8px;
@@ -108,6 +98,10 @@ button {
 
 button:hover {
     background-color: #0056b3;
+}
+
+tbody tr {
+    cursor: pointer;
 }
 
 td a {
@@ -166,8 +160,6 @@ td a:hover {
 .btn-back:hover {
     background-color: #5a6268;
 }
-
-
 
 
 /*Home*/
@@ -366,3 +358,11 @@ main {
 .hidden-label {
     display: none;
 }
+ .error {
+     color: red;
+
+ }
+
+ input.error {
+     border: 1px solid red;
+ }

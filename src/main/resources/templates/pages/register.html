@@ -1,13 +1,14 @@
-<!doctype html>
-<html lang="fr" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/header :: head}">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
   <title>Inscription</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
-<header th:replace="~{fragments/header :: header}"></header>
 
 <h1>Inscription</h1>
-<form th:class="form" th:action="@{/students/register/create}" th:object="${student}" method="post">
+<form th:action="@{/students/register/create}" th:object="${student}" method="post">
   <div class="form-group">
     <label for="firstName">Prénom:</label>
     <input type="text" id="firstName" th:field="*{firstName}" required/>
