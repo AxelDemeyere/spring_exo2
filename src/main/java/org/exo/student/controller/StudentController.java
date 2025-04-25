@@ -69,9 +69,8 @@ public class StudentController {
     }
 
     @PostMapping("/students/update/{id}")
-    public String updateStudent(@PathVariable("id") int id, @ModelAttribute Student student) {
-        student.setId(id);
-        studentService.updateStudent(id, student);
+    public String updateStudent(@ModelAttribute Student student) {
+        studentService.saveStudent(student);
         return "redirect:/students";
     }
 

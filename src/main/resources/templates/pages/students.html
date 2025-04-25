@@ -1,15 +1,12 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" th:href="@{/css/styles.css}">
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head}">
   <title>Etudiants</title>
 </head>
 <body>
 <main>
+    <header th:replace="~{fragments/header :: header}"></header>
+
   <h1>Recherche</h1>
   <div class="top-section">
     <form class="search-form" th:action="@{/students}" method="get">
@@ -26,9 +23,12 @@
 
 
   <h1>Liste des étudiants</h1>
+
   <a href="/students/register" class="btn-add">Ajouter un étudiant</a>
 
-  <table class="students-table">
+  <p th:class="empty-message" th:if="${students.isEmpty()}">Aucun étudiant n'a été trouvé</p>
+
+  <table th:unless="${students.isEmpty()}" class="students-table">
     <thead>
     <tr>
       <th>Prénom</th>
@@ -43,7 +43,9 @@
       <td th:text="${student.lastName}"></td>
       <td th:text="${student.email}"></td>
       <td>
-        <a th:href="@{/students/details/{id}(id=${student.id})}">Détails</a>
+        <a th:href="@{/students/details/{id}(id=${student.id})}">
+          <span class="material-symbols-outlined">info</span>
+        </a>
       </td>
     </tr>
     </tbody>

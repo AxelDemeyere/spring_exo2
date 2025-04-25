@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-  <link rel="stylesheet" th:href="@{/css/styles.css}">
+<!doctype html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head}">
+  <title>Details</title>
+
 </head>
 <body>
   <main>
+    <header th:replace="~{fragments/header :: header}"></header>
     <h1>Détails de l'étudiant</h1>
 
     <div class="student-details">
