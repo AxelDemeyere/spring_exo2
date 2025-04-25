@@ -10,7 +10,7 @@
   <title></title>
 </head>
 <body>
-<header th:fragment="header">
+<header th:fragment="header" th:if="${session.user}">
     <nav>
       <ul>
         <li><a th:href="@{/}">Accueil</a></li>
@@ -18,6 +18,22 @@
         <li><a th:href="@{/students/register}">Inscription</a></li>
       </ul>
     </nav>
+    <div class="user-info" th:if="${session.user}">
+      <img th:if="${session.user.imagePath}" class="icon-user" th:src="${session.user.imagePath}" alt="">
+      <a class="profil-btn" th:href="@{/profil}" th:text="${session.user.login}"></a>
+      <a class="logout-btn" th:href="@{/logout}">Déconnexion</a>
+    </div>
+</header>
+<header th:unless="${session.user}">
+    <nav>
+      <ul>
+        <li><a th:href="@{/register}">S'inscrire</a></li>
+        <li><a th:href="@{/login}">Se connecter</a></li>
+      </ul>
+    </nav>
+    <div class="user-info">
+      <span>Invité</span>
+    </div>
 </header>
 
 </body>

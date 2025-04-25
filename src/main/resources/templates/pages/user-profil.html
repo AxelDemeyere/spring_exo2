@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head}">
+  <title>Title</title>
+</head>
+<body>
+<header th:replace="~{fragments/header :: header}"></header>
+
+<main>
+  <h1>Profil de l'utilisateur</h1>
+  <div class="user-profile" th:object="${user}">
+    <p><strong>Nom d'utilisateur :</strong> <span th:text="${user.login}">Nom d'utilisateur</span></p>
+    <p><strong>Mot de passe :</strong> <span th:text="${user.password}">Nom</span></p>
+    <p><strong>Photo de profil :</strong><img th:src="${user.imagePath}" alt=""></p>
+  </div>
+  <div class="user-actions">
+    <a th:href="@{/profil/edit}">Modifier le profil</a>
+    <a th:href="@{/profil/delete}">Supprimer le compte</a>
+  </div>
+</main>
+</body>
+</html>

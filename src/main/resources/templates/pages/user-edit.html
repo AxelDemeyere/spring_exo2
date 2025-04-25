@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head}">
+
+  <title>Title</title>
+</head>
+<body>
+<header th:replace="~{fragments/header :: header}"></header>
+<main>
+  <h1>Modifier le profil de l'utilisateur</h1>
+  <form th:action="@{/profil/edit/}" th:object="${user}" method="post">
+    <div>
+      <label for="username">Nom d'utilisateur:</label>
+      <input type="text" id="username" th:field="*{login}" required/>
+    </div>
+    <div>
+      <label for="password">Mot de passe:</label>
+      <input type="password" id="password" th:field="*{password}" required/>
+    </div>
+    <button type="submit">Valider</button>
+  </form>
+
+  <h1>Modifier photo de profil</h1>
+  <form th:action="@{/upload}" method="post" enctype="multipart/form-data">
+    <div>
+      <label for="image">Sélectionner une image:</label>
+      <input type="file" id="image" name="image" required/>
+    </div>
+    <button type="submit">Valider</button>
+  </form>
+</main>
+
+</body>
+</html>

@@ -3,7 +3,6 @@ body {
     font-family: Arial, sans-serif;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem;
 }
 
 h1 {
@@ -48,6 +47,29 @@ a {
 
 a:hover {
     background-color: #0056b3;
+}
+
+.empty-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 1rem 1.5rem;
+    margin: 2rem 0;
+    border-radius: 6px;
+    border-left: 4px solid #f5c6cb;
+    font-size: 1.1rem;
+    text-align: center;
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 
@@ -165,33 +187,80 @@ td a:hover {
 /*Home*/
 
 header {
-    background: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 1rem 0;
+    background-color: white;
+    padding: 1rem 2rem;
     margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
+/* Navigation */
 nav ul {
     list-style: none;
-    padding: 0;
-    margin: 0;
     display: flex;
-    justify-content: center;
     gap: 2rem;
+    margin: 0;
+    padding: 0;
 }
 
 nav a {
-    color: white;
+    color: #ecf0f1;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 500;
     padding: 0.5rem 1rem;
     border-radius: 4px;
-    transition: all 0.2s;
+    transition: background-color 0.2s;
 }
 
 nav a:hover {
-    background-color: #f8f9fa;
-    color: #007bff;
+    background-color: #34495e;
+
+}
+
+/* Information utilisateur */
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #ecf0f1;
+}
+
+.user-info span {
+    padding: 0.5rem;
+    border-radius: 4px;
+    background-color: #34495e;
+}
+
+.user-info .profil-btn {
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.user-info .logout-btn {
+    background-color: #c82333;
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.user-info .logout-btn:hover {
+    background-color: #88271d;
+    color: #fff;
+}
+
+.icon-user {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+
 }
 
 .welcome-section {
@@ -343,10 +412,6 @@ nav a:hover {
     transition: color 0.3s;
 }
 
-main {
-    max-width: 1000px;
-    margin: 0 auto;
-}
 
 .top-section {
     display: flex;
@@ -366,3 +431,61 @@ main {
  input.error {
      border: 1px solid red;
  }
+
+/* Style de la carte profil */
+.user-profile {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.user-profile p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user-profile strong {
+    min-width: 150px;
+    color: #2c3e50;
+}
+
+.user-profile img {
+    max-width: 200px;
+    border-radius: 8px;
+    margin-top: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Style des boutons d'action */
+.user-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.user-actions a {
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.user-actions a:first-child {
+    background-color: #3498db;
+    color: white;
+}
+
+.user-actions a:last-child {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.user-actions a:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
